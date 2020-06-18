@@ -47,12 +47,8 @@ class JWTAuthServiceProvider extends ServiceProvider
             'auth'
         );
 
-        $this->mergeConfigFrom(
-            __DIR__ . '/./../../config/jwt.php',
-            'jwt'
-        );
-
         $this->publishes([
+            __DIR__ . '/./../../config/jwt.php' => config_path('jwt.php'),
             __DIR__ . '/./../../config/jwt-auth.php' => config_path('jwt-auth.php'),
         ]);
     }
