@@ -1,0 +1,27 @@
+{
+    "name": "carter-parker/jwt-auth",
+    "description": "A JWT authentication package to use in Laravel applications.",
+    "type": "library",
+    "authors": [{
+        "name": "Connor",
+        "email": "connor@parkerwebs.com"
+    }],
+    "require": {
+        "laravel/framework": "^7.0",
+        "php": "^7.3",
+        "tymon/jwt-auth": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CarterParker\\JWTAuth\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CarterParker\\JWTAuth\\Providers\\JWTAuthServiceProvider",
+                "Tymon\\JWTAuth\\Providers\\LaravelServiceProvider"
+            ]
+        }
+    }
+}
