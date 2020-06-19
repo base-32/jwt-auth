@@ -94,6 +94,14 @@ In order to set up password resets there are a few steps which you need to take.
 
 ```php
 /**
+ * Mutate the password to be hashed on entry into the database.
+ */
+public function setPasswordAttribute(string $value): void
+{
+    $this->attributes['password'] = app('hash')->make($value);
+}
+
+/**
  * Get the email address of the user for the password reset.
  */
 public function getEmailForPasswordReset(): string
