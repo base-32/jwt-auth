@@ -122,12 +122,13 @@ Inside of the configuration you are able to change the following properties:
 
 ## Methods
 
-| Uri              | Method | Required                                      |
-|------------------|--------|-----------------------------------------------|
-| /login           | POST   | email, password                               |
-| /forgot-password | POST   | email                                         |
-| /verify-token    | POST   | email, token                                  |
-| /reset-password  | POST   | email, token, password, password_confirmation |
+| Uri              | Method | Required                                               |
+|------------------|--------|--------------------------------------------------------|
+| /{prefix}/login           | POST   | email, password                               |
+| /{prefix}/forgot-password | POST   | email                                         |
+| /{prefix}/verify-token    | POST   | email, token                                  |
+| /{prefix}/reset-password  | POST   | email, token, password, password_confirmation |
+| /{currentUserrRoute       | GET    | -                                             |
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
