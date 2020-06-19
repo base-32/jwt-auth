@@ -27,6 +27,10 @@ class JWTAuthServiceProvider extends ServiceProvider
         Route::prefix(config('jwt-auth.prefix', '/'))
             ->namespace('CarterParker\\JWTAuth\\Http\\Controllers')
             ->group(__DIR__ . './../../routes/api.php');
+
+        Route::namespace('CarterParker\\JWTAuth\\Http\\Controllers')
+            ->middleware(['auth', 'refresh'])
+            ->group(__DIR__ . './../../routes/user.php');
     }
 
     /**

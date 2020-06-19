@@ -85,5 +85,49 @@ When making requests to the API you need to bear in mind that the token is short
 
 The response authorization header will need to be overwrite the current token stored and used for the next request.
 
+## Password Resets
+
+In order to set up password resets there are a few steps which you need to take.
+
+- Ensure that you have a password_resets table (this comes default with Laravel)
+- Add the following methods to your user model
+
+```php
+/**
+ * Get the email address of the user for the password reset.
+ */
+public function getEmailForPasswordReset(): string
+{
+    return $this->email;
+}
+
+/**
+ * Send the password reset notification.
+ */
+public function sendPasswordResetNotification($token)
+{
+    $this->notify(new ResetPasswordNotification($token));
+}
+```
+
+The package come pre-shipped with a basic reset password notification which you can use by using `CarterParker\JWTAuth\Notifications\ResetPasswordNotification`
+
+## Configuration
+
+Inside of the configuration you are able to change the following properties:
+
+- `prefix` - This is the prefix that is used in front of ALL authentication requests that go through the package.
+- `current_user.route` - This allows you to specify a seperate endpoint for getting the currently logged in user.
+- `current_user.attributes` - These are the attributes that you want to come back from the request to get the current user.
+
+## Methods
+
+| Uri              | Method | Required                                      |
+|------------------|--------|-----------------------------------------------|
+| /login           | POST   | email, password                               |
+| /forgot-password | POST   | email                                         |
+| /verify-token    | POST   | email, token                                  |
+| /reset-password  | POST   | email, token, password, password_confirmation |
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

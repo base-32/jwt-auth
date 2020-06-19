@@ -15,5 +15,21 @@ return [
     | - /auth/verify-token
     */
 
-    'prefix' => 'auth'
+    'prefix' => 'auth',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Current User
+    |--------------------------------------------------------------------------
+    |
+    | This is the route in order to get the details of the current user which is logged in.
+    | You can also specify what columns to bring back with the user.
+    */
+
+    'current_user' => [
+        'route' => 'user',
+        'attributes' => [
+            'first_name', 'last_name'
+        ]
+    ]
 ];

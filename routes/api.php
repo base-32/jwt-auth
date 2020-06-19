@@ -13,3 +13,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', 'AuthController@login');
+Route::post('/forgot-password', 'PasswordResetController@sendResetEmail');
+Route::post('/verify-token', 'PasswordResetController@verifyPasswordReset');
+Route::post('/reset-password', 'PasswordResetController@resetPassword');
