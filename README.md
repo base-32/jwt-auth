@@ -128,7 +128,7 @@ Inside of the configuration you are able to change the following properties:
 | /{prefix}/forgot-password | POST   | email                                         |
 | /{prefix}/verify-token    | POST   | email, token                                  |
 | /{prefix}/reset-password  | POST   | email, token, password, password_confirmation |
-| /{currentUserrRoute       | GET    | -                                             |
+| /{currentUserRoute}       | GET    | -                                             |
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
