@@ -40,4 +40,11 @@ class AuthController
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }
+
+    public function logout()
+    {
+        auth()->logout();
+
+        return new JsonResponse([], Response::HTTP_NO_CONTENT);
+    }
 }
