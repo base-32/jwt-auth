@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use CarterParker\Http\Requests\LoginRequest;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 class AuthController
 {
@@ -43,7 +44,11 @@ class AuthController
 
     public function logout()
     {
-        auth()->logout();
+        try {
+            auth()->logout();
+        } catch (TokenInvalidException $e) {
+            return new JsonResponse([], Response::HTTP_NO_CONTENT);
+        }
 
         return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }
